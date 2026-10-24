@@ -1,0 +1,60 @@
+.tabla {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  font-size: 13.5px;
+}
+
+.tabla th {
+  text-align: left;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-soft);
+  background: var(--surface-sunken);
+  padding: 10px 14px;
+}
+
+.tabla td {
+  padding: 12px 14px;
+  border-top: 1px solid var(--border);
+  vertical-align: middle;
+}
+
+.fila-inactiva td {
+  color: var(--text-faint);
+}
+
+.tabla-yo {
+  color: var(--text-faint);
+  font-size: 12px;
+}
+
+.tabla-acciones {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.rol {
+  display: inline-block;
+  padding: 3px 9px;
+  border-radius: 999px;
+  font-size: 11.5px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.rol-administrador { background: var(--primary-soft); color: var(--primary); }
+.rol-gerente { background: var(--accent-soft); color: var(--accent); }
+.rol-vendedor { background: #E4F0E9; color: var(--won); }
+
+.estado {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.estado-activo { color: var(--won); }
+.estado-inactivo { color: var(--lost); }

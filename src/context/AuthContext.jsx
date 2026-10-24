@@ -13,8 +13,14 @@ export function AuthProvider({ children }) {
     setUsuario(usuarioLogueado);
   };
 
+  const cerrarSesion = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('usuario');
+    setUsuario(null);
+  };
+
   return (
-    <AuthContext.Provider value={{ usuario, iniciarSesion }}>
+    <AuthContext.Provider value={{ usuario, iniciarSesion, cerrarSesion }}>
       {children}
     </AuthContext.Provider>
   );

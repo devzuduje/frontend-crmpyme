@@ -1,20 +1,15 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import { login } from '../../api/authApi';
 import { useAuth } from '../../context/useAuth';
+import { RUTA_POR_ROL } from './rutasPorRol';
 import './LoginPage.css';
-
-const RUTA_POR_ROL = {
-  administrador: '/dashboard/admin',
-  gerente: '/dashboard/gerente',
-  vendedor: '/dashboard/vendedor',
-};
 
 function LoginPage() {
   const [correo, setCorreo] = useState('');
   const [password, setPassword] = useState('');
   const [mensaje, setMensaje] = useState('');
-  const { iniciarSesion } = useAuth();
+  const { usuario: sesionActual, iniciarSesion } = useAuth();
   const navigate = useNavigate();
 
   const manejarEnvio = async (e) => {
@@ -24,9 +19,14 @@ function LoginPage() {
       iniciarSesion(token, usuario);
       navigate(RUTA_POR_ROL[usuario.rol] || '/');
     } catch (error) {
-      setMensaje(error.response?.data?.error || 'Error al iniciar sesión');
+      setMensaje(error.response?.data?.error?.message || 'Error al iniciar sesión');
     }
   };
+
+  // Si ya hay una sesión abierta, no tiene sentido mostrar el login: se va directo a su panel.
+  if (sesionActual && RUTA_POR_ROL[sesionActual.rol]) {
+    return <Navigate to={RUTA_POR_ROL[sesionActual.rol]} replace />;
+  }
 
   return (
     <div className="login-page">

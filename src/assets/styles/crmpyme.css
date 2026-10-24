@@ -8,15 +8,15 @@
   --text: #1B211E;
   --text-soft: #5C655F;
   --text-faint: #8A928B;
- 
+
   --primary: #2E4057;
   --primary-soft: #E7EBF0;
   --accent: #C77D2E;
   --accent-soft: #F7E7D3;
- 
+
   --won: #3D7A5C;
   --lost: #A8453B;
- 
+
   --radius: 10px;
   --font-display: 'Fraunces', serif;
   --font-body: 'Inter', sans-serif;
@@ -24,9 +24,103 @@
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
- 
+
 body {
   font-family: var(--font-body);
   background: var(--bg);
   color: var(--text);
+}
+
+/* ---------- Piezas reutilizables en todas las pantallas del panel (desde HU-02) ---------- */
+.pagina-encabezado {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+}
+
+.pagina-titulo {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 26px;
+  color: var(--text);
+}
+
+.pagina-subtitulo {
+  color: var(--text-soft);
+  font-size: 13.5px;
+  margin-top: 4px;
+}
+
+.tarjeta {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+}
+
+.boton {
+  display: inline-block;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.boton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.boton-primario { background: var(--primary); color: #fff; }
+.boton-secundario { background: var(--surface); color: var(--text); border-color: var(--border); }
+.boton-peligro { background: var(--surface); color: var(--lost); border-color: #E3C3BF; }
+
+.alerta {
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  margin-bottom: 16px;
+}
+
+.alerta-exito { background: #E4F0E9; color: var(--won); }
+.alerta-error { background: #F3E1DF; color: var(--lost); }
+
+.campo label {
+  display: block;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-soft);
+  margin-bottom: 6px;
+}
+
+.entrada {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 13.5px;
+  font-family: var(--font-body);
+  color: var(--text);
+  background: var(--surface);
+}
+
+.entrada:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.entrada:disabled {
+  background: var(--surface-sunken);
+  color: var(--text-faint);
+}
+
+.campo-ayuda {
+  font-size: 12px;
+  color: var(--text-faint);
+  margin-top: 4px;
 }

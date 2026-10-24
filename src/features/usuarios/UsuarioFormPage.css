@@ -1,0 +1,17 @@
+.form-usuario {
+  max-width: 520px;
+}
+
+.form-usuario-campos {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.form-usuario-botones {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 6px;
+}
